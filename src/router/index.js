@@ -26,13 +26,13 @@ import Register from 'components/Member/Register'
 
 import Search from 'components/Index/Search'
 import  NotFoundComponent from 'page/NotFoundComponent'
-import Popularize from 'components/Member/Popularize'
+// import Popularize from 'components/Member/Popularize'
 
 Vue.use(Router)
 
 export default new Router({
    mode: 'history',
-   base: '/xjksm',
+   base: '/',
   routes: [
     {
       path: '/',

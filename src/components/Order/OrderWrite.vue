@@ -322,7 +322,7 @@
             
                if(res.flag == 'success'){
                  
-                     window.location = 'http://www.scjksm.com/scjkSvn/Home/Weixinpay/pay?out_trade_no='+res.orderNumber;
+                     window.location = 'https://gcpt.hnxjksm.com/hnxjkSvn/Home/Weixinpay/pay?out_trade_no='+res.orderNumber;
                        
                }else{
                     this.$toast({

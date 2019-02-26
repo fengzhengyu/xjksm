@@ -60,7 +60,7 @@
             async goLogin(){
                 this.routerName = sessionStorage.getItem('routerName')
                 let {data: res} = await getLoginData({userName:this.userName,userPass:this.userPass,loginType:this.type});     
-                    console.log(res)
+                    // console.log(res)
                     if(res.message.flag == 'success'){
 
                        
@@ -127,7 +127,7 @@
         .header 
             position relative
             height 4.5rem
-            background url('../../common/img/logo.png') no-repeat;
+            background url('../../common/img/login.png') no-repeat;
             background-size 100% 4.5rem
             i   
                 position absolute
