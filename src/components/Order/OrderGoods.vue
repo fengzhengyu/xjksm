@@ -18,7 +18,7 @@
                       <div class="info">
                           <h3>{{item.goodsdata.goodsName}}</h3>
                           <p>{{item.goodsdata.goodsSpecification}} </p>
-                          <p class="price">￥{{item.goodsdata.goodsProcurementPrice? item.goodsdata.goodsProcurementPrice:item.goodsdata.goodsRetailPrice}}</p>
+                          <p class="price">￥{{item.goodsdata.goodsProcurementPrice? item.goodsdata.goodsProcurementPrice:item.goodsdata.goodsTradePrice?item.goodsdata.goodsTradePrice:item.goodsdata.goodsRetailPrice}}</p>
                           <div>x{{item.goodsNum}}</div>
                       </div>
                   </li>
@@ -44,7 +44,7 @@
         created(){
             let goodsStr = sessionStorage.getItem('imgList');
             this.goodsList = JSON.parse(goodsStr);
-         
+           
         },
         computed: {
           

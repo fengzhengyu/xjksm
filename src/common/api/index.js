@@ -5,7 +5,8 @@
 */ 
 import axios from 'axios';
 
-axios.defaults.baseURL= 'https://gcpt.hnxjksm.com/hnxjkSvn/Home/'
+axios.defaults.baseURL= 'https://gcpt.hnxjksm.com/hnxjkSvn/Home/';
+// 'https://gcpt.hnxjksm.com/hnxjkSvn/Home/'
 // http://www.scjksm.com/scjkceshi/Home
 // 拦截器 同归返回数据
 // axios.interceptors.response.use((res)=>{

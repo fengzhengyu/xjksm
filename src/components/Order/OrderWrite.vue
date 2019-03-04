@@ -180,7 +180,7 @@
                 let totalPrice = 0;
                 
                 this.goodsList.forEach((item,index)=>{
-                    let price = item.goodsdata.goodsProcurementPrice?item.goodsdata.goodsProcurementPrice:item.goodsdata.goodsRetailPrice;
+                    let price = item.goodsdata.goodsProcurementPrice?item.goodsdata.goodsProcurementPrice:item.goodsdata.goodsTradePrice?item.goodsdata.goodsTradePrice:item.goodsdata.goodsRetailPrice;
                    
                     totalPrice += parseFloat(price) * parseFloat(item.goodsdata.goodsNum);
                     this.goodsIdArr.push(item.goodsId)

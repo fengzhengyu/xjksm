@@ -130,7 +130,7 @@
                     this.cartList.forEach((item,index)=>{
                    
                         if (item.checked) {
-                            let price = item.goodsdata.goodsProcurementPrice?item.goodsdata.goodsProcurementPrice:item.goodsdata.goodsRetailPrice;
+                            let price = item.goodsdata.goodsProcurementPrice?item.goodsdata.goodsProcurementPrice:item.goodsdata.goodsTradePrice?item.goodsdata.goodsTradePrice:item.goodsdata.goodsRetailPrice;
                             totalPrice += price * parseInt(item.goodsdata.goodsNum);
                         }
                     

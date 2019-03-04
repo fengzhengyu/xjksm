@@ -165,7 +165,7 @@
         methods: {
             async getDetailData(){
                let {data: res} = await getOrderDetail({userCode:this.userCode,orderNumber:this.$route.query.id});
-                // console.log(res)
+                //  console.log(res)
                 if(res.flag == 'success'){
                      this.orderData = res.data.orderData;
                      this.goodsList =  res.data.orderData.goodsdata;
