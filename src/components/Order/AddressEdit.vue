@@ -127,7 +127,7 @@
         let slots =  [
           {
             flex: 1,
-            defaultIndex: 1,    
+            defaultIndex: 0,    
             values: this.getProvinceArr(),  //省份数组Object.keys(myaddress)
             className: 'slot1',
             textAlign: 'left'
