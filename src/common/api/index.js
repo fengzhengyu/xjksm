@@ -146,6 +146,33 @@ export let delMemberCollect = (data) => {
   })
 }
 
+// 微商分享列表
+
+export let getShareList = (data) => {
+  return axios.post('salesman/shareList',data,{
+    transformRequest:[function(data){
+      let params = '';
+      for(let key in data){
+          params += key +'='+data[key]+'&'
+      }
+      return params
+    }]
+  })
+}
+// 微商分享列表详情
+
+export let getShareDetail = (data) => {
+  return axios.post('salesman/shareDetail',data,{
+    transformRequest:[function(data){
+      let params = '';
+      for(let key in data){
+          params += key +'='+data[key]+'&'
+      }
+      return params
+    }]
+  })
+}
+
 
 // 获取主页数据
 export let getIndexData = (data) => {

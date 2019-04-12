@@ -59,6 +59,12 @@
                 <i class="iconfont icon-qianjin1"></i>
             </span>
         </div>
+         <div class="menu-list" @click="goShareList" v-if="wechatUser">
+           分享列表
+           <span class="right">
+                <i class="iconfont icon-qianjin1"></i>
+            </span>
+        </div>
         <div class="menu-list" @click="goSetting">
             系统设置
             <span class="right">
@@ -101,7 +107,8 @@
                 phone: '', //手机号
                 userName: '您未登录', //与户名
                 popupVisible: false ,
-                userLevelName: '会员'
+                userLevelName: '会员',
+                 wechatUser:false   //微信用户状态
             }
         },
         created(){
@@ -138,6 +145,7 @@
                     }else{
                         this.userName = res.info.salesAcct;
                         this.userLevelName = '合作微商';
+                         this.wechatUser = true;
                     }
                    
                 }
@@ -191,6 +199,11 @@
                   this.$router.push({
                         name: 'user'
                     })
+            },
+             goShareList(){
+                this.$router.push({
+                    name: 'share'
+                })
             },
             goSetting(){
                 this.$router.push({

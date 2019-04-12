@@ -151,6 +151,11 @@ export default {
                         this.orderList = res.orderList;
                         this.isLoad = true;
                         this.loading = false;
+                         if(res.msg == '已到底部'){
+                            this.loading = true;
+                            this.end = true;
+                            
+                        }
 
                   }
             

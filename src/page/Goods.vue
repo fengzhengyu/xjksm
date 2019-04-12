@@ -273,7 +273,11 @@
                         this.goodsList = res.typeGoodsList;
                         this.loading = false;     
                         this.isLoad = true;
-                       
+                        if(res.msg == '已到底部'){
+                            this.loading = true;
+                            this.end = true;
+                        
+                        }
                         
                     }else{
                         this.isLoadEnd = true;
