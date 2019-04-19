@@ -5,30 +5,22 @@
                 <i class="iconfont icon-fanhui"></i>
             </div>
             <div class="search">
-                <i class="iconfont icon-sousuo icon" @click="goSearch"></i>
+                <i class="iconfont icon-sousuo icon" @click="goSearch" @keyup.enter = "goSearch"></i>
                     <form action="javascript:void(0)">
                         <input type="search" placeholder="搜索商品" v-model="keyword"  @keyup.enter="goSearch" v-focus>
                     </form>
                 
             </div>
-            <div class="text" @click="goSearch">搜索</div>
+            <div class="text" @click="goSearch"  @keyup.enter = "goSearch">搜索</div>
         </div>
        
-        <div class="no-data" v-show="!isLoad">
+        <div class="no-data">
             <div class="box">
                 请输入您要搜索的商品
             </div>
             
         </div>
-        <GoodsList :goodsList="goodsList" 
-            :loading="end"
-            v-if="isLoad"
-            v-infinite-scroll="loadMore"
-            infinite-scroll-disabled="loading"
-            infinite-scroll-distance="10"
-            
-            >
-        </GoodsList>
+       
    
        
     </div>
@@ -67,69 +59,25 @@ export default {
         async goSearch(){
          
             if(this.keyword == ''){
+                this.$toast({
+                    message: '您搜索的内容不能为空',
+                    position: 'middle',
+                    duration: 3000
+                    });
                 return;
             }
-              this.$indicator.open({
-                text: 'Loading...',
-                spinnerType: 'fading-circle'
-            });
 
-            let params = {}
+              this.$router.push({
+                    name: 'searchName',
+                    params:{name: this.keyword}
+                })    
 
-                if(this.$store.state.salesId){
-                       params= {page:this.page,keyWord:this.keyword,salesId:this.$store.state.salesId,userType:'sales'};
-                }else{
-                     params= {userCode:this.userCode,page:this.page,keyWord:this.keyword}
-                }
-            let {data: res} = await getIndexData(  params);
-            // console.log(res)
-            
-            //  if(res.info == '已到底部'){
-            //     this.goodsList = res.goodsList;
-            //     this.loading = true;
-            //     this.end = true;
-            //     this.isLoad = true;
-            //  }
-            this.$indicator.close();   
 
-            if(res.info == '已到底部'){
-                this.goodsList = res.goodsList;
-                this.isLoad = true
-                this.end = true;
-                if(res.goodsList.length<=0){
-                    this.$toast({
-                        message: '关键字有误！',
-                        position:'middle',
-                        duration: 2000
-                    });
-                     this.isLoad = false
-                }
-                
-            }else{
-
-                if(res.goodsList.length>0){
-                    this.goodsList = res.goodsList;
-                    this.isLoad = true;
-                    this.loading = false;
-                   
-                
-                }
-            }
-           
            
              
              
         },
-        //上啦加载
-        loadMore(){
-           
-            this.loading = true;
-             setTimeout(()=>{
-                    this.page++;
-                    this.goSearch()
-
-            },300)
-        },
+       
         show(){
            this.$toast({
                     message: '请登陆后查看！',
@@ -146,9 +94,7 @@ export default {
            this.$router.back()
         }
     },
-      components: {
-        GoodsList,
-      }
+    
 }
 </script>
 <style lang="stylus" scoped>
@@ -219,61 +165,7 @@ export default {
                 line-height .5rem
                 text-align center
                 color #38a0df         
-        .goods 
-            padding-top 1rem
-            .load-more-wrap 
-                width 100%;
-                overflow hidden
-            
-
-                .goods-list 
-                    float left;
-                    width 50%;
-                    .list-img 
-                        width: 100%;
-                        height: 2.4rem;
-
-                        img 
-                            width: 100%;
-                            height: 100%;
-                        
-                    
-
-                    .list-desc 
-                        padding .15rem 0 .15rem .15rem
-                        .title
-                            color #000000
-                            font-size .24rem
-                            font-weight bold
-                            padding .05rem 0
-                            text-overflow ellipsis
-                            white-space nowrap
-                            overflow hidden
-                        p
-                            padding .1rem 0
-                            color #555555
-                            font-size .2rem
-                            text-overflow ellipsis
-                            white-space nowrap
-                            overflow hidden
-                            .show
-                                background #ff0000
-                                color #ffffff
-                                padding .05rem .1rem
-                            .price
-                                color #dc143c
-                            .repertory
-                                float right     
-                                margin-right .05rem
-            .ladding
-                text-align center
-                line-height .6rem
-                height .6rem
-                font-size .24rem
-                margin .15rem 0
-                img 
-                    display inline-block
-                    vertical-align middle                
+              
                   
 </style>
 

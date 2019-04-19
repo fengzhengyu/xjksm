@@ -27,6 +27,7 @@ import Login from 'components/Member/Login'
 import Register from 'components/Member/Register'
 
 import Search from 'components/Index/Search'
+import  SearchName from 'components/Index/SearchName'
 import  NotFoundComponent from 'page/NotFoundComponent'
 // import Popularize from 'components/Member/Popularize'
 
@@ -220,6 +221,14 @@ export default new Router({
       path: '/search',
       name: 'search',
       component: Search
+    },
+    {
+      path: '/search/:name',
+      name: 'searchName',
+      component: SearchName,
+      meta: {
+        keepAlive: true
+      }
     },
     // {
     //   path: '/popularize',
