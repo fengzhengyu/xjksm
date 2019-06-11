@@ -57,113 +57,113 @@ Vue.directive('focus', {
 
 
 
-import {getShareData} from 'common/api'
-// 微信分享
-Vue.prototype.$wx = wx;
+// import {getShareData} from 'common/api'
+// // 微信分享
+// Vue.prototype.$wx = wx;
 
-let setShare = function(title, desc, imgUrl, sharelink,link){
+// let setShare = function(title, desc, imgUrl, sharelink,link){
 
 
-  getShareData({url:link})
-    .then(response => {
-     let params = response.data.data;
+//   getShareData({url:link})
+//     .then(response => {
+//      let params = response.data.data;
 
-    //  console.log(params)
-      //初始化（微信开发者工具中，报{errMsg: "config:ok"}意味成功，{"errMsg":"config:invalid signature"} 签名无效，后台检查获取参数各项参数是否有问题，可以去微信校验签名工具中校验一下，大部分出问题在于生成签名url与当前location.href不符合。{"errMsg":"config:invalid url domain"}，检查微信公众号后台设置的js安全域名和业务域名是否准确）
-      wx.config({
-        debug: false,
-        appId: params.appId, 
-        timestamp: params.timestamp,
-        nonceStr:  params.nonceStr,
-        signature: params.signature,
-        jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone','onMenuShareWeibo']
-        //  'chooseImage','uploadImage','startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice'
+//     //  console.log(params)
+//       //初始化（微信开发者工具中，报{errMsg: "config:ok"}意味成功，{"errMsg":"config:invalid signature"} 签名无效，后台检查获取参数各项参数是否有问题，可以去微信校验签名工具中校验一下，大部分出问题在于生成签名url与当前location.href不符合。{"errMsg":"config:invalid url domain"}，检查微信公众号后台设置的js安全域名和业务域名是否准确）
+//       wx.config({
+//         debug: false,
+//         appId: params.appId, 
+//         timestamp: params.timestamp,
+//         nonceStr:  params.nonceStr,
+//         signature: params.signature,
+//         jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareQZone','onMenuShareWeibo']
+//         //  'chooseImage','uploadImage','startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice'
 
-        // 所有要调用的 API 都要加到这个列表中
-      });
-      wx.ready(() => {
-        // 朋友圈
-        wx.onMenuShareTimeline({
-          title: title, // 分享标题
-          link: sharelink, // 分享链接
-          imgUrl: imgUrl, // 分享图标
-          success () {
-            // 用户确认分享后执行的回调函数
-            console.log('success')
-          },
-          cancel () {
-            // 用户取消分享后执行的回调函数
-            console.log('cancel')
-          }
-        })
-        // 分享给朋友
-        wx.onMenuShareAppMessage({
-          title: title, // 分享标题
-          link: sharelink, // 分享链接
-          imgUrl: imgUrl, // 分享图标
-          desc: desc, // 分享描述
-          success: function () {
-            // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-            // 用户取消分享后执行的回调函数
-          },
-          fail: function (res) {
-            // console.log(JSON.stringify(res))
-          }
-        })
-        //分享到QQ
-        wx.onMenuShareQQ({
-          title: title, // 分享标题
-          link: sharelink, // 分享链接
-          imgUrl: imgUrl, // 分享图标
-          desc: desc, // 分享描述
-          success: function () {
-              // 用户确认分享后执行的回调函数
-          },
-          cancel: function () {
-              // 用户取消分享后执行的回调函数
-          }
-        })
-        //分享到微博
-        wx.onMenuShareWeibo({
-            title: title, // 分享标题
-            link: sharelink, // 分享链接
-            imgUrl: imgUrl, // 分享图标
-            desc: desc, // 分享描述
-            success: function () {
-                // 用户确认分享后执行的回调函数
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        })
-        //分享到QQ空间
-        wx.onMenuShareQZone({
-            title: title, // 分享标题
-            link: sharelink, // 分享链接
-            imgUrl: imgUrl, // 分享图标
-            desc: desc, // 分享描述
-            success: function () {
-                // 用户确认分享后执行的回调函数
-            },
-            cancel: function () {
-                // 用户取消分享后执行的回调函数
-            }
-        })
-      })
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    wx.error(err => {
-      console.log(err)
-    })
+//         // 所有要调用的 API 都要加到这个列表中
+//       });
+//       wx.ready(() => {
+//         // 朋友圈
+//         wx.onMenuShareTimeline({
+//           title: title, // 分享标题
+//           link: sharelink, // 分享链接
+//           imgUrl: imgUrl, // 分享图标
+//           success () {
+//             // 用户确认分享后执行的回调函数
+//             console.log('success')
+//           },
+//           cancel () {
+//             // 用户取消分享后执行的回调函数
+//             console.log('cancel')
+//           }
+//         })
+//         // 分享给朋友
+//         wx.onMenuShareAppMessage({
+//           title: title, // 分享标题
+//           link: sharelink, // 分享链接
+//           imgUrl: imgUrl, // 分享图标
+//           desc: desc, // 分享描述
+//           success: function () {
+//             // 用户确认分享后执行的回调函数
+//           },
+//           cancel: function () {
+//             // 用户取消分享后执行的回调函数
+//           },
+//           fail: function (res) {
+//             // console.log(JSON.stringify(res))
+//           }
+//         })
+//         //分享到QQ
+//         wx.onMenuShareQQ({
+//           title: title, // 分享标题
+//           link: sharelink, // 分享链接
+//           imgUrl: imgUrl, // 分享图标
+//           desc: desc, // 分享描述
+//           success: function () {
+//               // 用户确认分享后执行的回调函数
+//           },
+//           cancel: function () {
+//               // 用户取消分享后执行的回调函数
+//           }
+//         })
+//         //分享到微博
+//         wx.onMenuShareWeibo({
+//             title: title, // 分享标题
+//             link: sharelink, // 分享链接
+//             imgUrl: imgUrl, // 分享图标
+//             desc: desc, // 分享描述
+//             success: function () {
+//                 // 用户确认分享后执行的回调函数
+//             },
+//             cancel: function () {
+//                 // 用户取消分享后执行的回调函数
+//             }
+//         })
+//         //分享到QQ空间
+//         wx.onMenuShareQZone({
+//             title: title, // 分享标题
+//             link: sharelink, // 分享链接
+//             imgUrl: imgUrl, // 分享图标
+//             desc: desc, // 分享描述
+//             success: function () {
+//                 // 用户确认分享后执行的回调函数
+//             },
+//             cancel: function () {
+//                 // 用户取消分享后执行的回调函数
+//             }
+//         })
+//       })
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+//     wx.error(err => {
+//       console.log(err)
+//     })
     
  
 
-}
-Vue.prototype.$setShare = setShare;
+// }
+// Vue.prototype.$setShare = setShare;
 
 
 
@@ -206,13 +206,13 @@ router.beforeEach((to, from,next) => {
       shareState = true;
     }
   
-    if(shareState){
-      setTimeout(()=> {
-        let imgUrl = 'http://www.scjksm.com'+require('./common/img/logo.png');
+    // if(shareState){
+    //   setTimeout(()=> {
+    //     let imgUrl = 'http://www.scjksm.com'+require('./common/img/logo.png');
       
-        setShare('聚康供采平台', '供应商与采购商的理想平台', imgUrl, location.href,sharelink)
-      },300)
-    }
+    //     setShare('聚康供采平台', '供应商与采购商的理想平台', imgUrl, location.href,sharelink)
+    //   },300)
+    // }
   
   if(to.meta.requireAuth){
     if(store.state.userCode !== null || store.state.salesId ){
@@ -227,36 +227,33 @@ router.beforeEach((to, from,next) => {
     next();
   }
   
-  // let isRefresh =  sessionStorage.getItem('Refresh')
-  // if(to.name== 'cart' && from.name == 'index') { 
+  let isRefresh =  sessionStorage.getItem('Refresh')
+  if(to.name== 'cart' && from.name == 'index') { 
    
-  //   if(isRefresh == '1'){
-  //    router.go(0)
-  //     // window.location.reload()
-  //   }else{
-  //     sessionStorage.setItem('Refresh',1);
-  //   }
-  // }else if(to.name== 'cart' && from.name == 'id'){
-  //   if(isRefresh == '1'){
-  //     router.go(0)
-  //   }else{
-  //     sessionStorage.setItem('Refresh',1);
-  //   }
-  // }else if(to.name== 'cart' && from.name == 'login'){
-  //   sessionStorage.setItem('isRefresh',1);
-  //   if(isRefresh == '1'){
-  //     router.go(0)
-  //   }
-  // }else if(to.name== 'cart' && from.name == 'member'){
-  //   if(isRefresh == '1'){
-  //     router.go(0)
-  //   }else{
-  //     sessionStorage.setItem('Refresh',1);
-  //   }
-  // }else 
-
-    
-  // }
+    if(isRefresh == '1'){
+     router.go(0)
+      // window.location.reload()
+    }else{
+      sessionStorage.setItem('Refresh',1);
+    }
+  }else if(to.name== 'cart' && from.name == 'id'){
+    if(isRefresh == '1'){
+      router.go(0)
+    }else{
+      sessionStorage.setItem('Refresh',1);
+    }
+  }else if(to.name== 'cart' && from.name == 'login'){
+    sessionStorage.setItem('isRefresh',1);
+    if(isRefresh == '1'){
+      router.go(0)
+    }
+  }else if(to.name== 'cart' && from.name == 'member'){
+    if(isRefresh == '1'){
+      router.go(0)
+    }else{
+      sessionStorage.setItem('Refresh',1);
+    }
+  }
 
 
 })

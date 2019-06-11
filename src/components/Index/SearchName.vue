@@ -16,17 +16,18 @@
        
 
         <GoodsList :goodsList="goodsList" 
-            :loading="end"
-            v-if="isLoad"
-            v-infinite-scroll="loadMore"
-            infinite-scroll-disabled="loading"
-            infinite-scroll-distance="10"
+            :loading="end" 
+            v-if="isLoad" 
+            v-infinite-scroll="loadMore" 
+            infinite-scroll-disabled="loading" 
+            infinite-scroll-distance="10" 
             
             >
         </GoodsList>
-   
+        
        
     </div>
+
 </template>
 <script>
 import GoodsList from 'components/Index/GoodsList'

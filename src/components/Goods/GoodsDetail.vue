@@ -133,12 +133,12 @@
                 return this.$store.state.cartCount;
             }
         },
-        watch: {
-            $route(){
+        // watch: {
+        //     $route(){
             
-               this.getData(); //当路由改变时 重新请求签名
-            }
-        },
+        //        this.getData(); //当路由改变时 重新请求签名
+        //     }
+        // },
         mounted(){
              this.$nextTick(() => {
              
@@ -264,7 +264,7 @@
                      params= {goodsId: this.$route.params.goodsId,userCode: this.userCode};
                 }
                let {data:res} = await getGoodsDetailData( params);
-           
+                 this.getWeChatShare();
                 if(res){
                     this.goodsDetailPhotos = res.goodsDetailPhotos;
                     this.goods =  res.goodsDetail[0];
@@ -276,7 +276,7 @@
                    
 
                     this.$indicator.close();
-                    this.getWeChatShare();
+                   
                 }else{
                     
                 }

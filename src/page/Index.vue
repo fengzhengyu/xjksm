@@ -53,12 +53,12 @@
 
             }
         },
-         watch: {
-            $route(){
+        //  watch: {
+        //     $route(){
             
-               this.getAllData(); //当路由改变时 重新请求签名
-            }
-        },
+        //        this.getAllData(); //当路由改变时 重新请求签名
+        //     }
+        // },
         computed:{
              userCode(){               
                 return this.$store.state.userCode;
@@ -90,18 +90,18 @@
                 }
                 let {data: res} = await getShareData({url:sharelink}); //
                 if(res &&res.flag == 'success'){
-                
+               
                 //    if( this.shopId && this.shopId != '' && this.shopId != 'null' ){
                 //         this.url = location.href.split('?')[0]+'?a='+this.$store.state.salesId+'&b='+this.shopId;
                 //     }else{
                 //         this.url = location.href.split('?')[0];
                 //     } 
                     this.url = location.href.split('?')[0];
-                    let imgUrl = 'http://www.scjksm.com'+require('../common/img/logo.png');
+                   let imgUrl = 'https://gcpt.hnxjksm.com'+require('../common/img/login.png');
             
                    let data =res.data;
                     
-
+                console.log( data);
                     wx.config({
                         debug:false,
                         appId: data.appId, 
@@ -117,7 +117,7 @@
                         //分享给朋友
                             // console.log(this.link)
                         wx.onMenuShareAppMessage({
-                        title: '聚康供采平台', // 分享标题
+                        title: '鑫聚康供采平台', // 分享标题
                         link:   this.url , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                         desc: '供应商与采购商的理想平台', // 分享描述
                         imgUrl: imgUrl, // 分享图标

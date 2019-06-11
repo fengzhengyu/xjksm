@@ -76,7 +76,8 @@
                 isLoad:false,
                 goodsNum: 0,
                 end: false,
-                isLoadEnd: false
+                isLoadEnd: false,
+                routerChange: false
             }
         },
         created(){
@@ -110,6 +111,7 @@
             this.page =1;
             this.goodsList =[];
             this.end = false;
+            this.routerChange = true;
             this.getGoodsTypeList()
             }
         },
@@ -133,7 +135,7 @@
                 //         this.url = location.href.split('?')[0];
                 //     } 
                     this.url = location.href.split('?')[0];
-                    let imgUrl = 'http://www.scjksm.com'+require('../common/img/logo.png');
+                    let imgUrl = 'https://gcpt.hnxjksm.com'+require('../common/img/login.png');
             
                    let data =res.data;
                     
@@ -153,7 +155,7 @@
                         //分享给朋友
                             // console.log(this.link)
                         wx.onMenuShareAppMessage({
-                        title: '聚康供采平台', // 分享标题
+                        title: '鑫聚康供采平台', // 分享标题
                         link:   this.url , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                         desc: '供应商与采购商的理想平台', // 分享描述
                         imgUrl: imgUrl, // 分享图标
@@ -255,8 +257,11 @@
                 }
               
                 let {data:res} = await getGoodsTypeData(params);
+                // if(!this.routerChange){
+                //     this.getWeChatShare();
+                // }
+                 this.getWeChatShare();
                 
-                this.getWeChatShare();
                 if(flag){
                   
                      this.goodsList = res.typeGoodsList;
