@@ -41,7 +41,7 @@ export let getRegisterData = (data) =>{
 
 // 判断账号是否存在接口
 export let getAccountCheck = (data) =>{
-  return axios.post('user/accountCheck',data,{
+  return axios.post('User/accountCheck',data,{
     transformRequest:[function(data){
       let params = '';
       for(let key in data){

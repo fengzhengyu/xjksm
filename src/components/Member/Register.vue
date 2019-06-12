@@ -132,7 +132,7 @@ import {getAccountCheck ,getUserCode , getRegisterData} from 'common/api'
               
             },
             async getAuthCode(){
-              let reg=/^1[34578]{1}\d{9}$/;
+              let reg=/^1[3456789]{1}\d{9}$/;
               if(this.userName == '') {
                 this.$toast({
                   message: '手机号不能为空',
@@ -149,12 +149,13 @@ import {getAccountCheck ,getUserCode , getRegisterData} from 'common/api'
                 });
                 return;
               }
-               getAccountCheck({userName:this.userName}).then(response => {
                     
+               getAccountCheck({userName:this.userName}).then(response => {
+                   
                    let res = response.data;
-                       
+                    //    console.log(res)
                     if(res.flag =='success'){
-                        
+                       
                         getUserCode({userName: this.userName}).then(response => {
                                let res = response.data;
                            
@@ -184,7 +185,7 @@ import {getAccountCheck ,getUserCode , getRegisterData} from 'common/api'
                     }
         
 
-                })
+                }).catch(err=>console.log(err))
               
             }
             
