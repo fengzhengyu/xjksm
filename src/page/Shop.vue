@@ -79,7 +79,7 @@
                 //         this.url = location.href.split('?')[0];
                 //     } 
                     this.url = location.href.split('?')[0];
-                     let imgUrl = 'https://gcpt.hnxjksm.com'+require('../common/img/login.png');
+                     let imgUrl = 'https://gcpt.hnxjksm.com'+require('../common/img/share-img.jpg');
             
                    let data =res.data;
                     
@@ -115,7 +115,7 @@
 
                         //分享到朋友圈
                         wx.onMenuShareTimeline({
-                            title: '聚康供采平台', // 分享标题
+                            title: '鑫聚康供采平台', // 分享标题
                             link:   this.url , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                           
                             imgUrl: imgUrl, // 分享图标
@@ -128,7 +128,7 @@
                         })
                         //分享到QQ
                         wx.onMenuShareQQ({
-                            title: '聚康供采平台', // 分享标题
+                            title: '鑫聚康供采平台', // 分享标题
                             link:   this.url , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             desc: '供应商与采购商的理想平台', // 分享描述
                             imgUrl: imgUrl, // 分享图标
@@ -141,7 +141,7 @@
                         })
                         //分享到微博
                         wx.onMenuShareWeibo({
-                             title: '聚康供采平台', // 分享标题
+                             title: '鑫聚康供采平台', // 分享标题
                             link:   this.url , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             desc: '供应商与采购商的理想平台', // 分享描述
                             imgUrl: imgUrl, // 分享图标
@@ -154,7 +154,7 @@
                         })
                         //分享到QQ空间
                         wx.onMenuShareQZone({
-                            title: '聚康供采平台', // 分享标题
+                            title: '鑫聚康供采平台', // 分享标题
                             link:   this.url , // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             desc: '供应商与采购商的理想平台', // 分享描述
                             imgUrl: imgUrl, // 分享图标

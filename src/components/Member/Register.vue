@@ -238,6 +238,7 @@ import {getAccountCheck ,getUserCode , getRegisterData} from 'common/api'
                         font-size .24rem
                     .auth
                         flex 1
+                        font-size .24rem
                     .auth-wrap
                         flex 0 0 1.3rem
                         text-align center
